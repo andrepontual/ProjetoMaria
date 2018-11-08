@@ -46,8 +46,8 @@ public class EstimativaDAO extends AbstractDAO {
 		String data = fmt.print(data1);
 		String sql;
 			 sql = "SELECT SUM(QUANTIDADE),MES_ANO FROM HISTORICO WHERE PRODUTO_SKU IN (SELECT SKU_PHASE_OUT "
-			 		+ "FROM SKU_PHASE WHERE SKU_PHASE_IN = " + sku + " ) OR PRODUTO_SKU = " + sku + " AND "
-			 				+ "MES_ANO >= ' " + data + " ' GROUP BY MES_ANO ORDER BY MES_ANO ASC;";
+			 		+ "FROM SKU_PHASE WHERE SKU_PHASE_IN = " + sku + " AND MES_ANO >= ' " + data + " ') "
+			 				+ "OR PRODUTO_SKU = " + sku + " AND MES_ANO >= ' " + data + " ' GROUP BY MES_ANO ORDER BY MES_ANO ASC;";
 		try (Connection conn = getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(sql);
 				ResultSet rs = pstmt.executeQuery();) {

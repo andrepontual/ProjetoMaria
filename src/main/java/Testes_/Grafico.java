@@ -58,6 +58,7 @@ public class Grafico extends JFrame{
 		List<Double> previsao_5 = Lista_5;
 		List<Double> previsao_6 = Lista_6;
 		DateTime dataIni = dataInicio;
+		System.out.println(dataIni + " data " + sku + " SKU");
 		String datax = null; 
 		for(int i = 2; i < previsao.size(); i++) {
 			datax = fmt.print(dataIni.plusMonths(i));
