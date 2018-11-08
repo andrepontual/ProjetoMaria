@@ -80,7 +80,9 @@ public void escrever(Path nomeArquivo,  DateTime dataInicial, DateTime dataPrevi
 						resultado.getListaSuavizacaoExponencial_2(),
 						resultado.getListaSuavizacaoExponencial_4(),
 						resultado.getListaSuavizacaoExponencial_6(),
-						dataInicial);
+						resultado.getSKU(),
+						dataInicial
+						);
 			}
 			
 			LOGGER.info(Messages.ARQUIVO_CRIADO_COM_SUCESSO);
