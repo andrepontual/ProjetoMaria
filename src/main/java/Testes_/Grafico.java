@@ -27,61 +27,78 @@ public class Grafico extends JFrame{
 	int sku;
 	DateTimeFormatter fmt = DateTimeFormat.forPattern("MM/yyyy");
 	
-	public Grafico(List<Double> Lista,
-					List<Double> Lista_2,
-					List<Double> Lista_3,
-					List<Double> Lista_4,
-					List<Double> Lista_5,
-					List<Double> Lista_6, 
-					int sku,
-					DateTime dataInicio) {
+	public Grafico(
+			List<Double> Lista_1,
+			List<Double> Lista_2,
+			List<Double> Lista_3,
+			List<Double> Lista_4,
+			List<Double> Lista_5,
+			List<Double> Lista_6,
+			List<Double> Lista_7, 
+			int sku,
+			DateTime dataInicio) {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize(1200, 900);
 		setLocationRelativeTo(null);
-		criarGrafico(Lista, Lista_2, Lista_3, Lista_4, Lista_5, Lista_6, sku, dataInicio);
+		criarGrafico(Lista_1, Lista_2, Lista_3, Lista_4, Lista_5, Lista_6, Lista_7, sku, dataInicio);
 		setVisible(true);
 	}
 	
-	public void criarGrafico(List<Double> Lista,
-							List<Double> Lista_2,
-							List<Double> Lista_3,
-							List<Double> Lista_4,
-							List<Double> Lista_5,
-							List<Double> Lista_6,
-							int sku,
-							DateTime dataInicio) {
+	public void criarGrafico(
+			List<Double> Lista_1,
+			List<Double> Lista_2,
+			List<Double> Lista_3,
+			List<Double> Lista_4,
+			List<Double> Lista_5,
+			List<Double> Lista_6,
+			List<Double> Lista_7,
+			int sku,
+			DateTime dataInicio) {
 		DefaultCategoryDataset dataSet = new DefaultCategoryDataset();
-		List<Double> previsao = Lista;
+		List<Double> previsao_1 = Lista_1;
+		System.out.println(previsao_1.size() + "   TAMANHO PREVISAO 1");
 		List<Double> previsao_2 = Lista_2;
+		System.out.println(previsao_2.size() + "   TAMANHO PREVISAO 1");
 		List<Double> previsao_3 = Lista_3;
+		System.out.println(previsao_3.size() + "   TAMANHO PREVISAO 1");
 		List<Double> previsao_4 = Lista_4;
+		System.out.println(previsao_4.size() + "   TAMANHO PREVISAO 1");
 		List<Double> previsao_5 = Lista_5;
+		System.out.println(previsao_5.size() + "   TAMANHO PREVISAO 1");
 		List<Double> previsao_6 = Lista_6;
-		DateTime dataIni = dataInicio;
+		System.out.println(previsao_6.size() + "   TAMANHO PREVISAO 1");
+		List<Double> previsao_7 = Lista_7;
+		System.out.println(previsao_7.size() + "   TAMANHO PREVISAO 1");
+//		DateTime dataIni = dataInicio;
+	
 		String datax = null; 
-		for(int i = 2; i < previsao.size(); i++) {
-			datax = fmt.print(dataIni.plusMonths(i));
-			dataSet.setValue(previsao.get(i), "Previsao MM - 2" ,String.valueOf(datax));
+		for(int i = 2; i < previsao_1.size(); i++) {
+			datax = fmt.print(dataInicio.plusMonths(i));
+			dataSet.setValue(previsao_1.get(i), "Historico" ,String.valueOf(datax));
 		}
-		for(int j = 4; j < previsao_2.size(); j++) {
-			datax = fmt.print(dataIni.plusMonths(j));
-			dataSet.setValue(previsao_2.get(j), "Previsao MM - 4" ,String.valueOf(datax));
+		for(int j = 2; j < previsao_2.size(); j++) {
+			datax = fmt.print(dataInicio.plusMonths(j));
+			dataSet.setValue(previsao_2.get(j), "Previsao MM - 2" ,String.valueOf(datax));
 		}
-		for(int k = 6; k < previsao_3.size(); k++) {
-			datax = fmt.print(dataIni.plusMonths(k));
-			dataSet.setValue(previsao_3.get(k), "Previsao MM - 6" ,String.valueOf(datax));
+		for(int k = 4; k < previsao_3.size(); k++) {
+			datax = fmt.print(dataInicio.plusMonths(k));
+			dataSet.setValue(previsao_3.get(k), "Previsao MM - 4" ,String.valueOf(datax));
 		}
-		for(int l = 2; l < previsao_4.size(); l++) {
-			datax = fmt.print(dataIni.plusMonths(l));
-			dataSet.setValue(previsao_4.get(l), "Previsao SE - 2" ,String.valueOf(datax));
+		for(int l = 6; l < previsao_4.size(); l++) {
+			datax = fmt.print(dataInicio.plusMonths(l));
+			dataSet.setValue(previsao_4.get(l), "Previsao MM - 6" ,String.valueOf(datax));
 		}
 		for(int m = 2; m < previsao_5.size(); m++) {
-			datax = fmt.print(dataIni.plusMonths(m));
-			dataSet.setValue(previsao_5.get(m), "Previsao SE - 4" ,String.valueOf(datax));
+			datax = fmt.print(dataInicio.plusMonths(m));
+			dataSet.setValue(previsao_5.get(m), "Previsao SE - 2" ,String.valueOf(datax));
 		}
-		for(int n = 2; n < previsao_6.size(); n++) {
-			datax = fmt.print(dataIni.plusMonths(n));
-			dataSet.setValue(previsao_6.get(n), "Previsao SE - 6" ,String.valueOf(datax));
+		for(int n = 4; n < previsao_6.size(); n++) {
+			datax = fmt.print(dataInicio.plusMonths(n));
+			dataSet.setValue(previsao_6.get(n), "Previsao SE - 4" ,String.valueOf(datax));
+		}
+		for(int o = 6; o < previsao_7.size(); o++) {
+			datax = fmt.print(dataInicio.plusMonths(o));
+			dataSet.setValue(previsao_7.get(o), "Previsao SE - 6" ,String.valueOf(datax));
 		}
 		
 		JFreeChart grafico = ChartFactory.createLineChart(

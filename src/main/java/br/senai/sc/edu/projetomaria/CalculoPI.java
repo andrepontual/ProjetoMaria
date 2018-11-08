@@ -131,7 +131,7 @@ public class CalculoPI {
 	public void setTamMediaMovel(int tamMediaMovel) {
 		this.tamMediaMovel = tamMediaMovel;
 	}
-
+	
 	public int getPrevisao() {
 		return previsao;
 	}

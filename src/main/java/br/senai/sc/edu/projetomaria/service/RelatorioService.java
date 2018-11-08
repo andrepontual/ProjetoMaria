@@ -46,6 +46,7 @@ public class RelatorioService {
 	public void exportRelatorioEstimativa(Path path, DateTime dataInicio, DateTime dataPrevisao) {
 		EstimativaWritter estimativa = new EstimativaWritter();
 		estimativa.escrever(path, dataInicio, dataPrevisao);	
+		
 	}
 
 	public void exportRelatorioPhase(Path path) {

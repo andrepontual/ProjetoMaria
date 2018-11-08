@@ -49,7 +49,6 @@ public void escrever(Path nomeArquivo,  DateTime dataInicial, DateTime dataPrevi
 			while (it.hasNext()) {
 				csvCompiladorDeArquivos.printRecord(colunasArquivo);
 				Resultado resultado = it.next();
-				
 				for (int i = 0; i < resultado.getListaMediaMovel_2().size(); i++) {
 				csvCompiladorDeArquivos.printRecord(resultado.getSKU(),
 													fmt.print(resultado.getDataInicioPrevisao().plusMonths(i+1)),
@@ -74,7 +73,9 @@ public void escrever(Path nomeArquivo,  DateTime dataInicial, DateTime dataPrevi
 				csvCompiladorDeArquivos.printRecord(resultado.getSKU(),df2.format(resultado.getValorAlpha_6()) + "  < -- Menor Valor de ALPHA para Suav. Exp 6");
 				csvCompiladorDeArquivos.printRecord(resultado.getSKU(),df.format(resultado.getMenorEqm()) + "  < -- Menor Erro Quadratico.");
 				
-				Grafico grafico = new Grafico(resultado.getListaMediaMovel_2(),
+				Grafico grafico = new Grafico(
+						resultado.getListaHistorico(),
+						resultado.getListaMediaMovel_2(),
 						resultado.getListaMediaMovel_4(),
 						resultado.getListaMediaMovel_6(),
 						resultado.getListaSuavizacaoExponencial_2(),
