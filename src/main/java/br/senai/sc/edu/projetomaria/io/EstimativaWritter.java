@@ -83,7 +83,6 @@ public void escrever(Path nomeArquivo,  DateTime dataInicial, DateTime dataPrevi
 						resultado.getSKU(),
 						resultado.getDataInicioPrevisao()
 						);
-				System.out.println(resultado.getDataInicioPrevisao() + " data inicio previsao");
 			}
 			
 			LOGGER.info(Messages.ARQUIVO_CRIADO_COM_SUCESSO);
