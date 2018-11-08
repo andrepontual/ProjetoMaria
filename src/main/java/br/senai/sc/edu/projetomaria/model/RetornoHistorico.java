@@ -21,12 +21,13 @@ public class RetornoHistorico {
 		this.listaDataSku = listaDataSku;
 	}
 
+	
 	public List<Double> getListaDemanda() {
 		return listaDemanda;
 	}
 
 	public void setListaDemanda(List<Double> listaDemanda) {
-		listaDemanda = listaDemanda;
+		this.listaDemanda = listaDemanda;
 	}
 
 	public List<Double> getListaValor() {

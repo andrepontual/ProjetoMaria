@@ -49,9 +49,11 @@ public void escrever(Path nomeArquivo,  DateTime dataInicial, DateTime dataPrevi
 			while (it.hasNext()) {
 				csvCompiladorDeArquivos.printRecord(colunasArquivo);
 				Resultado resultado = it.next();
+				
 				for (int i = 0; i < resultado.getListaMediaMovel_2().size(); i++) {
 				csvCompiladorDeArquivos.printRecord(resultado.getSKU(),
 													fmt.print(resultado.getDataInicioPrevisao().plusMonths(i+1)),
+													df.format(resultado.getListaDemanda().get(i)),
 													df.format(resultado.getListaHistorico().get(i)),
 													df.format(resultado.getListaMediaMovel_2().get(i)),
 													df.format(resultado.getListaMediaMovel_4().get(i)),

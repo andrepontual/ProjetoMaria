@@ -25,7 +25,7 @@ public class Estimativa {
 		
 		for (int i = 0; i < listaSku.size(); i++) {
 			
-RetornoHistorico retornoLista =  dao.listaHistorico(listaSku.get(i), data1);
+			RetornoHistorico retornoLista =  dao.listaHistorico(listaSku.get(i), data1);
 			
 			List<Double> listarHistorico = new ArrayList<>();
 			listarHistorico = retornoLista.getListaValor();
@@ -98,7 +98,7 @@ RetornoHistorico retornoLista =  dao.listaHistorico(listaSku.get(i), data1);
 			r.setDataResultado(data2);
 			r.setListaHistorico(media_2.getListaHistorico());
 			r.setListaDemanda(listaDemanda);
-			r.popularListaDemanda();
+			r.popularListaDemanda(); 
 			r.setMenorEqm(menorEqm);
 			
 			result.add(r);

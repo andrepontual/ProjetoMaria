@@ -66,14 +66,14 @@ public class EstimativaDAO extends AbstractDAO {
 				DateTime dt = new DateTime(rs.getDate("MES_ANO"));
 				skuDataBanco = dt;
 				listaHistorico.add(skuHistorico);
-				listaSkuData.add(skuDataBanco);
 				listaDemanda.add(skuHistorico);
+				listaSkuData.add(skuDataBanco);
+				
 			}
 			
 			listaValor.setListaValor(listaHistorico);
 			listaValor.setListaDataSku(listaSkuData);
 			listaValor.setListaDemanda(listaDemanda);
-						
 			
 			return listaValor;
 				

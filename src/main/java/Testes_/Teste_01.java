@@ -31,10 +31,10 @@ public class Teste_01 {
 		String dataInicio = "01/03/2013";
 		String dataFim = "01/01/2021";
 		
-		DateTime data1 = fmt.parseDateTime(dataInicio);
-		DateTime data2 = fmt.parseDateTime(dataFim);
-		
-		List<Integer> lh2 = new LinkedList<>(lh);
+//		DateTime data1 = fmt.parseDateTime(dataInicio);
+//		DateTime data2 = fmt.parseDateTime(dataFim);
+//		
+//		List<Integer> lh2 = new LinkedList<>(lh);
 //		CalculoPI mv2 = new CalculoPI(2, lh2, data1, data2);
 //		mv2.calcularMediaMovel();
 //		mv2.calcuarSuavizacaoExponencial(0.33);
