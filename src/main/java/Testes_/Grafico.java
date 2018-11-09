@@ -14,6 +14,8 @@ import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.renderer.category.LineAndShapeRenderer;
 import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.time.MovingAverage;
+import org.jfree.data.time.TimeSeries;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
@@ -122,6 +124,7 @@ public class Grafico extends JFrame{
 			plot.setRangeGridlinePaint(Color.BLACK);
 			plot.setDomainCrosshairColumnKey(datax);
 			
+		
 			org.jfree.chart.axis.CategoryAxis eixo = grafico.getCategoryPlot().getDomainAxis();
 			eixo.setCategoryLabelPositions(CategoryLabelPositions.UP_90);
 				
