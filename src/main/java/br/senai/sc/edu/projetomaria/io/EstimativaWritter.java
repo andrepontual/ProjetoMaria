@@ -82,7 +82,8 @@ public void escrever(Path nomeArquivo,  DateTime dataInicial, DateTime dataPrevi
 						resultado.getListaSuavizacaoExponencial_4(),
 						resultado.getListaSuavizacaoExponencial_6(),
 						resultado.getSKU(),
-						resultado.getDataInicioPrevisao()
+						resultado.getDataInicioPrevisao(),
+						resultado.getDataFinalPrevisao()
 						);
 			}
 			
