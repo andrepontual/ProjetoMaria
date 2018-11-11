@@ -12,25 +12,41 @@ public class RelatorioController {
 		RelatorioService service = new RelatorioService();
 		switch (command.getTipo()) {
 		case CANAL:
-			service.exportRelatorioCanal(command.getArquivo());
+			service.exportRelatorioCanal(
+					command.getArquivo()
+					);
 			break;
 		case FAMILIA:
-			service.exportRelatorioFamilia(command.getArquivo());
+			service.exportRelatorioFamilia(
+					command.getArquivo()
+					);
 			break;
 		case PRODUTO:
-			service.exportRelatorioProduto(command.getArquivo());
+			service.exportRelatorioProduto(
+					command.getArquivo()
+					);
 			break;
 		case HISTORICO:
-			service.exportRelatorioHistorico(command.getArquivo());
+			service.exportRelatorioHistorico(
+					command.getArquivo()
+					);
 			break;
 		case ESTIMATIVA:
-			service.exportRelatorioEstimativa(command.getArquivo(), command.getDataIncial(), command.getDataPrevisao());
+			service.exportRelatorioEstimativa(
+					command.getArquivo(),
+					command.getDataIncial(), 
+					command.getDataPrevisao()
+					);
 			break;
 		case PHASE:
-			service.exportRelatorioPhase(command.getArquivo());
+			service.exportRelatorioPhase(
+					command.getArquivo()
+					);
 			break;
 		default:
-			throw new UnsupportedOperationException(Messages.ERRO_METODO_NAO_IMPLEMENTADO);
+			throw new UnsupportedOperationException(
+					Messages.ERRO_METODO_NAO_IMPLEMENTADO
+					);
 		}
 	}
 

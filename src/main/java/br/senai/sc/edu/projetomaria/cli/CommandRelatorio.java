@@ -21,9 +21,6 @@ public class CommandRelatorio {
 	@Parameter(names = {"-t", "--tipo" }, required = true, description = "Tipo do relatório")
 	private RelatorioEnum tipo = null;		
 	
-	@Parameter(names = {"-pa", "--periodoanterior" }, required = false, description = "Periodo anterior")
-	private int periodoAnterior = 0;		
-	
 	@Parameter(names = "-data", required = false, description = "Uma data para o início e outra para o fim da previsão")
 	private List<String> datas;
 	

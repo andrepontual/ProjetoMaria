@@ -15,7 +15,7 @@ import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
-import Testes_.Grafico;
+import br.senai.sc.edu.projetomaria.grafico.Grafico;
 import br.senai.sc.edu.projetomaria.model.Resultado;
 import br.senai.sc.edu.projetomaria.resource.Config;
 import br.senai.sc.edu.projetomaria.resource.Messages;
@@ -31,7 +31,7 @@ public class EstimativaWritter {
 	private static final Object[] colunasArquivo = {"Sku", "mes_ano","Historico", "Demanda", "Previsão MM-2", "previsão MM-4", "previsão MM-6",
 													"Suav. Ex. - MM-2", "Suav. Ex. - MM-4", "Suav. Ex. - MM-6" };
 
-public void escrever(Path nomeArquivo,  DateTime dataInicial, DateTime dataPrevisao) {
+public void escrever(Path nomeArquivo, Path pastaGrafico,  DateTime dataInicial, DateTime dataPrevisao) {
 		CSVPrinter csvCompiladorDeArquivos = null;
 
 		CSVFormat formatacaoCsv = CSVFormat.DEFAULT.withRecordSeparator(SEPARADORCOLUNAS).withDelimiter(Config.CSV_DELIMITADOR);
@@ -72,7 +72,7 @@ public void escrever(Path nomeArquivo,  DateTime dataInicial, DateTime dataPrevi
 				csvCompiladorDeArquivos.printRecord(resultado.getSKU(),df2.format(resultado.getValorAlpha_4()) + "  < -- Menor Valor de ALPHA para Suav. Exp 4");
 				csvCompiladorDeArquivos.printRecord(resultado.getSKU(),df2.format(resultado.getValorAlpha_6()) + "  < -- Menor Valor de ALPHA para Suav. Exp 6");
 				csvCompiladorDeArquivos.printRecord(resultado.getSKU(),df.format(resultado.getMenorEqm()) + "  < -- Menor Erro Quadratico.");
-				
+				@SuppressWarnings("unused")
 				Grafico grafico = new Grafico(
 						resultado.getListaHistorico(),
 						resultado.getListaMediaMovel_2(),
@@ -83,7 +83,8 @@ public void escrever(Path nomeArquivo,  DateTime dataInicial, DateTime dataPrevi
 						resultado.getListaSuavizacaoExponencial_6(),
 						resultado.getSKU(),
 						resultado.getDataInicioPrevisao(),
-						resultado.getDataFinalPrevisao()
+						resultado.getDataFinalPrevisao(),
+						pastaGrafico
 						);
 			}
 			

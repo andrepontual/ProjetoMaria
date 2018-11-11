@@ -22,7 +22,6 @@ public class Estimativa {
 		EstimativaDAO dao = new EstimativaDAO();
 		List<Integer> listaSku = dao.listarSKU();
 		
-		
 		for (int i = 0; i < listaSku.size(); i++) {
 			
 			RetornoHistorico retornoLista =  dao.listaHistorico(listaSku.get(i), data1);

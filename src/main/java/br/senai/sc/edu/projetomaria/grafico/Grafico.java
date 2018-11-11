@@ -1,8 +1,9 @@
-package Testes_;
+package br.senai.sc.edu.projetomaria.grafico;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.List;
 
 import javax.swing.JFrame;
@@ -13,31 +14,22 @@ import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.CategoryLabelPositions;
 import org.jfree.chart.plot.CategoryPlot;
-import org.jfree.chart.plot.Plot;
 import org.jfree.chart.plot.PlotOrientation;
-import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.category.CategoryItemRenderer;
 import org.jfree.chart.renderer.category.LineAndShapeRenderer;
-import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 import org.jfree.chart.title.LegendTitle;
 import org.jfree.data.category.DefaultCategoryDataset;
-import org.jfree.data.xy.XYDataset;
-import org.jfree.data.xy.XYSeries;
 import org.jfree.ui.RectangleEdge;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
-
-import javafx.scene.chart.CategoryAxis;
-import javafx.scene.chart.ValueAxis;
-import jdk.internal.org.objectweb.asm.tree.analysis.Value;
 
 public class Grafico extends JFrame{
 
 	private static final long serialVersionUID = 1L;
 	int sku;
 	DateTimeFormatter fmt = DateTimeFormat.forPattern("MM/yyyy");
-	
+	Path pastaArquivo = null;
 	public Grafico(
 			List<Double> Lista_1,
 			List<Double> Lista_2,
@@ -48,7 +40,8 @@ public class Grafico extends JFrame{
 			List<Double> Lista_7, 
 			int sku,
 			DateTime dataInicio,
-			DateTime dataFinal
+			DateTime dataFinal,
+			Path pastaArquivo
 			) {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize(1200, 900);
@@ -63,7 +56,8 @@ public class Grafico extends JFrame{
 				Lista_7, 
 				sku, 
 				dataInicio,
-				dataFinal
+				dataFinal,
+				pastaArquivo
 				);
 		setVisible(true);
 	}
@@ -78,7 +72,8 @@ public class Grafico extends JFrame{
 			List<Double> Lista_7,
 			int sku,
 			DateTime dataInicio,
-			DateTime dataFinal
+			DateTime dataFinal,
+			Path pastaArquivo
 			) {
 		DefaultCategoryDataset dataSet = new DefaultCategoryDataset();
 		List<Double> previsao_1 = Lista_1;
@@ -200,14 +195,19 @@ public class Grafico extends JFrame{
 			legenda.setItemFont(font);
 			legenda.setPosition(RectangleEdge.BOTTOM);
 			grafico.addLegend(legenda);
-			
-			
-			
 				
 		ChartPanel painel = new ChartPanel(grafico);
 		add(painel);
 		try {
-			ChartUtilities.saveChartAsJPEG(new java.io.File("G:/D O C U M E N T O S/D O R I Z I O/SENAI/Eclipese_N/ProjetoMaria/dist/Grafico_Sku - " + sku +".jpg"), grafico, 1200, 900);
+			
+			ChartUtilities.saveChartAsJPEG(
+					new java.io.File( 
+							pastaArquivo.getParent() + "/Grafico_Sku - " + sku +".jpg"
+							),
+					grafico,
+					1200,
+					900
+					);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
