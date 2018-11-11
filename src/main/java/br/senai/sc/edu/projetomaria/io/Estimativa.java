@@ -10,7 +10,7 @@ import org.joda.time.format.DateTimeFormatter;
 import br.senai.sc.edu.projetomaria.dao.EstimativaDAO;
 import br.senai.sc.edu.projetomaria.model.Resultado;
 import br.senai.sc.edu.projetomaria.model.RetornoHistorico;
-import br.senai.sc.edu.projetomaria.CalculoPI;
+import br.senai.sc.edu.projetomaria.stat.CalculoPI;
 
 public class Estimativa {
 	DateTimeFormatter fmt = DateTimeFormat.forPattern("dd/MM/yyyy");
@@ -22,9 +22,11 @@ public class Estimativa {
 		EstimativaDAO dao = new EstimativaDAO();
 		List<Integer> listaSku = dao.listarSKU();
 		
+		
 		for (int i = 0; i < listaSku.size(); i++) {
 			
 			RetornoHistorico retornoLista =  dao.listaHistorico(listaSku.get(i), data1);
+			List<Integer> listaSkuOut = dao.listarSKU_OUT(listaSku.get(i));
 			
 			List<Double> listarHistorico = new ArrayList<>();
 			listarHistorico = retornoLista.getListaValor();
@@ -99,7 +101,7 @@ public class Estimativa {
 			r.setListaDemanda(listaDemanda);
 			r.popularListaDemanda(); 
 			r.setMenorEqm(menorEqm);
-			
+			r.setListaSkuOut(listaSkuOut);
 			result.add(r);
 		}
 		return result;

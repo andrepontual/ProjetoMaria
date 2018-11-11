@@ -1,4 +1,4 @@
-package br.senai.sc.edu.projetomaria;
+package br.senai.sc.edu.projetomaria.stat;
 import java.text.DecimalFormat;
 import java.util.Deque;
 import java.util.LinkedList;

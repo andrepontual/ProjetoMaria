@@ -62,16 +62,17 @@ public void escrever(Path nomeArquivo, Path pastaGrafico,  DateTime dataInicial,
 													df.format(resultado.getListaSuavizacaoExponencial_6().get(i))
 													);
 				}
-				csvCompiladorDeArquivos.printRecord(resultado.getSKU(),df.format(resultado.getEqm_2()) + "  < -- Erro Quadratico Médio MM 2");
-				csvCompiladorDeArquivos.printRecord(resultado.getSKU(),df.format(resultado.getEqm_4()) + "  < -- Erro Quadratico Médio MM 4");
-				csvCompiladorDeArquivos.printRecord(resultado.getSKU(),df.format(resultado.getEqm_6()) + "  < -- Erro Quadratico Médio MM 6");
-				csvCompiladorDeArquivos.printRecord(resultado.getSKU(),df.format(resultado.getEqmSV_2()) + "  < -- Erro Quadratico Médio Suav. Exp 2");
-				csvCompiladorDeArquivos.printRecord(resultado.getSKU(),df.format(resultado.getEqmSV_4()) + "  < -- Erro Quadratico Médio Suav. Exp 4");
-				csvCompiladorDeArquivos.printRecord(resultado.getSKU(),df.format(resultado.getEqmSV_6()) + "  < -- Erro Quadratico Médio Suav. Exp 6");
-				csvCompiladorDeArquivos.printRecord(resultado.getSKU(),df2.format(resultado.getValorAlpha_2()) + "  < -- Menor Valor de ALPHA para Suav. Exp 2");
-				csvCompiladorDeArquivos.printRecord(resultado.getSKU(),df2.format(resultado.getValorAlpha_4()) + "  < -- Menor Valor de ALPHA para Suav. Exp 4");
-				csvCompiladorDeArquivos.printRecord(resultado.getSKU(),df2.format(resultado.getValorAlpha_6()) + "  < -- Menor Valor de ALPHA para Suav. Exp 6");
-				csvCompiladorDeArquivos.printRecord(resultado.getSKU(),df.format(resultado.getMenorEqm()) + "  < -- Menor Erro Quadratico.");
+				csvCompiladorDeArquivos.printRecord(resultado.getSKU(), resultado.getListaSkuOut() + "  < -- SKUs Phase_Out que compõem este SKU");
+				csvCompiladorDeArquivos.printRecord(resultado.getSKU(), df.format(resultado.getEqm_2()) + "  < -- Erro Quadratico Médio MM 2");
+				csvCompiladorDeArquivos.printRecord(resultado.getSKU(), df.format(resultado.getEqm_4()) + "  < -- Erro Quadratico Médio MM 4");
+				csvCompiladorDeArquivos.printRecord(resultado.getSKU(), df.format(resultado.getEqm_6()) + "  < -- Erro Quadratico Médio MM 6");
+				csvCompiladorDeArquivos.printRecord(resultado.getSKU(), df.format(resultado.getEqmSV_2()) + "  < -- Erro Quadratico Médio Suav. Exp 2");
+				csvCompiladorDeArquivos.printRecord(resultado.getSKU(), df.format(resultado.getEqmSV_4()) + "  < -- Erro Quadratico Médio Suav. Exp 4");
+				csvCompiladorDeArquivos.printRecord(resultado.getSKU(), df.format(resultado.getEqmSV_6()) + "  < -- Erro Quadratico Médio Suav. Exp 6");
+				csvCompiladorDeArquivos.printRecord(resultado.getSKU(), df2.format(resultado.getValorAlpha_2()) + "  < -- Menor Valor de ALPHA para Suav. Exp 2");
+				csvCompiladorDeArquivos.printRecord(resultado.getSKU(), df2.format(resultado.getValorAlpha_4()) + "  < -- Menor Valor de ALPHA para Suav. Exp 4");
+				csvCompiladorDeArquivos.printRecord(resultado.getSKU(), df2.format(resultado.getValorAlpha_6()) + "  < -- Menor Valor de ALPHA para Suav. Exp 6");
+				csvCompiladorDeArquivos.printRecord(resultado.getSKU(), df.format(resultado.getMenorEqm()) + "  < -- Menor Erro Quadratico.");
 				@SuppressWarnings("unused")
 				Grafico grafico = new Grafico(
 						resultado.getListaHistorico(),
@@ -84,7 +85,8 @@ public void escrever(Path nomeArquivo, Path pastaGrafico,  DateTime dataInicial,
 						resultado.getSKU(),
 						resultado.getDataInicioPrevisao(),
 						resultado.getDataFinalPrevisao(),
-						pastaGrafico
+						pastaGrafico,
+						resultado.getListaSkuOut()
 						);
 			}
 			

@@ -41,11 +41,30 @@ public class EstimativaDAO extends AbstractDAO {
 		}
 		return listSku;
 	}
-
+	
+	public List<Integer> listarSKU_OUT(Integer sku) {
+		String sql = "SELECT SKU_PHASE_OUT FROM SKU_PHASE WHERE SKU_PHASE_IN = " + sku + ";";
+		List<Integer> listaSkuPhase = new ArrayList<>();
+		
+		try (Connection conn = getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql);
+				ResultSet rs = pstmt.executeQuery();) {
+			
+			while (rs.next()) {
+				Integer sku_out;
+				sku_out = rs.getInt("SKU_PHASE_OUT");
+				listaSkuPhase.add(sku_out);
+			}
+		}
+			catch (SQLException e) {
+			LOGGER.info(Messages.BD_ERRO_CONEXAO);
+		}
+			return listaSkuPhase;
+}
+	
 	public RetornoHistorico listaHistorico(Integer sku, DateTime data1) {
 		String data = fmt.print(data1);
-		String sql;
-			 sql = "SELECT SUM(QUANTIDADE),MES_ANO FROM HISTORICO WHERE PRODUTO_SKU IN (SELECT SKU_PHASE_OUT "
+		String sql = "SELECT SUM(QUANTIDADE),MES_ANO FROM HISTORICO WHERE PRODUTO_SKU IN (SELECT SKU_PHASE_OUT "
 			 		+ "FROM SKU_PHASE WHERE SKU_PHASE_IN = " + sku + " AND MES_ANO >= ' " + data + " ') "
 			 				+ "OR PRODUTO_SKU = " + sku + " AND MES_ANO >= ' " + data + " ' GROUP BY MES_ANO ORDER BY MES_ANO ASC;";
 		try (Connection conn = getConnection();

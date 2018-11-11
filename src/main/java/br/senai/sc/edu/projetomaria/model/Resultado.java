@@ -26,6 +26,7 @@ public class Resultado {
 	private List<Double> listaSuavizacaoExponencial_6;
 	private List<Double> listaHistorico;
 	private List<Double> listaDemanda;
+	private List<Integer> listaSkuOut;
 	private double eqm_2;
 	private double eqm_4;
 	private double eqm_6;
@@ -176,6 +177,14 @@ public class Resultado {
 
 	public void setListaSuavizacaoExponencial_6(List<Double> listaSuavizacaoExponencial_6) {
 		this.listaSuavizacaoExponencial_6 = listaSuavizacaoExponencial_6;
+	}
+
+	public List<Integer> getListaSkuOut() {
+		return listaSkuOut;
+	}
+
+	public void setListaSkuOut(List<Integer> listaSkuOut) {
+		this.listaSkuOut = listaSkuOut;
 	}
 
 	public double getEqm_2() {

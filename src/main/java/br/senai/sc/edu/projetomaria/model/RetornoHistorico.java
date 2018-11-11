@@ -11,7 +11,6 @@ public class RetornoHistorico {
 	private List<Double> listaDemanda = new ArrayList<Double>();
 	private List<DateTime> listaDataSku = new ArrayList<DateTime>();
 	
-	
 	public RetornoHistorico() {
 		super();
 	}

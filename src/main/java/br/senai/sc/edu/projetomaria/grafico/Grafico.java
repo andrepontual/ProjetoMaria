@@ -37,11 +37,12 @@ public class Grafico extends JFrame{
 			List<Double> Lista_4,
 			List<Double> Lista_5,
 			List<Double> Lista_6,
-			List<Double> Lista_7, 
+			List<Double> Lista_7,
 			int sku,
 			DateTime dataInicio,
 			DateTime dataFinal,
-			Path pastaArquivo
+			Path pastaArquivo,
+			List<Integer> ListaSkuOut
 			) {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize(1200, 900);
@@ -57,7 +58,8 @@ public class Grafico extends JFrame{
 				sku, 
 				dataInicio,
 				dataFinal,
-				pastaArquivo
+				pastaArquivo,
+				ListaSkuOut
 				);
 		setVisible(false);
 	}
@@ -73,7 +75,8 @@ public class Grafico extends JFrame{
 			int sku,
 			DateTime dataInicio,
 			DateTime dataFinal,
-			Path pastaArquivo
+			Path pastaArquivo,
+			List<Integer> ListaSkuOut
 			) {
 		DefaultCategoryDataset dataSet = new DefaultCategoryDataset();
 		List<Double> previsao_1 = Lista_1;
@@ -144,7 +147,8 @@ public class Grafico extends JFrame{
 		}
 		
 		JFreeChart grafico = ChartFactory.createLineChart(
-				"Sku: " + sku + "\n Previsão de: " + fmt.print(dataInicio.plusMonths(1)) + " até: " + fmt.print(dataFinal),
+				"Sku: " + sku + "\n Previsão de: " + fmt.print(dataInicio.plusMonths(1)) +
+				" até: " + fmt.print(dataFinal) + ( ListaSkuOut.size() == 0  ? "" : " \nSku Componente: " + ListaSkuOut ),
 				"Data",
 				"Valor",
 				dataSet,
