@@ -59,7 +59,7 @@ public class Grafico extends JFrame{
 				dataFinal,
 				pastaArquivo
 				);
-		setVisible(true);
+		setVisible(false);
 	}
 	
 	public void criarGrafico(
