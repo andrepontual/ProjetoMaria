@@ -57,7 +57,6 @@ public class CanalDAO extends AbstractDAO {
 			LOGGER.debug(Messages.ERRO_CANAL_INSERIR);
 		}
 	}
-
 	public void update(Canal canal) throws SQLException {
 		String sql = SQL.UPDATE_CANAL;
 		try (PreparedStatement stmt =  getConnection().prepareStatement(sql)){

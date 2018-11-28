@@ -1,13 +1,10 @@
 package br.senai.sc.edu.projetomaria.stat;
-import java.text.DecimalFormat;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
 
 import org.joda.time.DateTime;
 import org.joda.time.Months;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
 
 public class CalculoPI {
 
@@ -21,10 +18,6 @@ public class CalculoPI {
 	private List<Double> listaHistorico;
 	private List<Double> listaSuavizacaoExponencial;
 	private Deque<Double> mediaMovel;
-	DecimalFormat df = new DecimalFormat(",000");
-	DecimalFormat df2 = new DecimalFormat(",000.00");
-	DecimalFormat df3 = new DecimalFormat("0.#");
-	DateTimeFormatter fmt = DateTimeFormat.forPattern("MM/yyyy");
 	private Double menorValor;
 	private Double valorAlpha;
 	private DateTime dataInicioPrevisao;
@@ -166,32 +159,34 @@ public class CalculoPI {
 	}
 		
 	public void calcularMediaMovel(){
+		
 		mediaMovel = new LinkedList<Double>();
 		listaMediaMovel = new LinkedList<Double>();
 		double soma = 0.0;
+		
 		for (int j = 0; j < calcularNumeroPrevisoes(); j++) {
-			listaHistorico.add(0.0);
-		}
-		for ( int i = 0; i < listaHistorico.size(); i++) {
-			if(mediaMovel.size() < tamMediaMovel) {
-				listaMediaMovel.add(0.0);
-				soma += listaHistorico.get(i);
-				mediaMovel.add(listaHistorico.get(i));
-			}else{
-				if(listaHistorico.get(i) == 0.0) {
-					listaMediaMovel.add(i, soma / tamMediaMovel);
-					listaHistorico.set(i, soma / tamMediaMovel);
+				listaHistorico.add(0.0);
+			}
+			for ( int i = 0; i < listaHistorico.size(); i++) {
+				if(mediaMovel.size() < tamMediaMovel) {
+					listaMediaMovel.add(0.0);
+					soma += listaHistorico.get(i);
+					mediaMovel.add(listaHistorico.get(i));
+				}else{
+					if(listaHistorico.get(i) == 0.0) {
+						listaMediaMovel.add(i, (double) Math.round(soma / tamMediaMovel));
+						listaHistorico.set(i, (double) Math.round(soma / tamMediaMovel));
+						soma -= mediaMovel.removeFirst();
+						soma += listaMediaMovel.get(i);
+						mediaMovel.add(listaMediaMovel.get(i));
+				}else {
+					listaMediaMovel.add((double) Math.round(soma / tamMediaMovel));
 					soma -= mediaMovel.removeFirst();
-					soma += listaMediaMovel.get(i);
-					mediaMovel.add(listaMediaMovel.get(i));
-			}else {
-				listaMediaMovel.add(soma / tamMediaMovel);
-				soma -= mediaMovel.removeFirst();
-				soma += listaHistorico.get(i);
-				mediaMovel.add(listaHistorico.get(i));
+					soma += listaHistorico.get(i);
+					mediaMovel.add(listaHistorico.get(i));
+				}
+				}
 			}
-			}
-		}
 	}
 	
 	public void calcularEqmMM() { 
@@ -212,31 +207,6 @@ public class CalculoPI {
 		eqmSV = soma / tamanho;
 	}
 	
-	public String escreveErroQuaMedioMM() {
-		String eqm ="";
-		eqm = "O EQM para a Média Movel de " + getTamMediaMovel() + " é de: " + df.format(getEqm()) + '\n';
-		return eqm;
-	
-	}	
-	
-	public String escreveErroQuaMedioSV() {
-		String eqm ="";
-		eqm = "O EQM para a Média Exponencial: " + getTamMediaMovel() + " é de: " + df.format(getEqmSV()) + '\n';
-		return eqm;
-	}
-	
-	public String escreveListaMedia() {
-		String mediaMovel = "";
-		for (int i = 0; i < calcularPeriodo(); i++) {
-			mediaMovel += "Demanda mês: " + 
-					(fmt.print(getDataInicioPrevisao().plusMonths(i)))  + " - " + 
-					df.format(listaHistorico.get(i)) + " Previsão: " + (i+1) +
-					" - " + df.format(getListaMediaMovel().get(i))+"\n";
-		}
-		return mediaMovel;
-			
-	}
-		
 	public int calcularPeriodo() {
 		return Months.monthsBetween(getDataInicioPrevisao(), getDataFinalPrevisao()).getMonths()+1;
 	
@@ -260,19 +230,8 @@ public class CalculoPI {
 		
 	}
 
-	public String escreveListaExponencial() {
-		String suavizacao = "";
-		for (int i = 0; i < calcularPeriodo(); i++) {
-			suavizacao += "Demanda para o mês: " + 
-					(fmt.print(getDataInicioPrevisao().plusMonths(i)))  + " - " + 
-					df.format(getListaHistorico().get(i)) + " Suavização: " + (i+1) +
-					" - " + df.format(getListaSuavizacaoExponencial().get(i))+"\n";
-		}
-		return suavizacao;
-	}
-	
 	public void calcularMenorAlpha() {
-		double i = 0.01;
+		double i = 0.001;
 		double valor;
 		double menorValor = 0;
 		double menorAlpha = 0;
@@ -289,17 +248,12 @@ public class CalculoPI {
 				menorValor = valor;
 				menorAlpha = i;
 			}
-			i += 0.01;
+			i += 0.001;
 		}
 			setValorAlpha(menorAlpha);
 			setMenorValor(menorValor);
 		}
 		
-	}
-	public String escreverMenorAlpha() {
-		String AlphaM = "";
-		AlphaM += "O menor valor para alpha é : " + df3.format(getValorAlpha()) + " - O valor do menor EQM: é " + df.format(getMenorValor());
-		return AlphaM;	
 	}
 	
 }

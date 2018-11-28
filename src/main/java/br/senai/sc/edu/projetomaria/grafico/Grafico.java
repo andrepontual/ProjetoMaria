@@ -19,6 +19,9 @@ import org.jfree.chart.renderer.category.CategoryItemRenderer;
 import org.jfree.chart.renderer.category.LineAndShapeRenderer;
 import org.jfree.chart.title.LegendTitle;
 import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.time.MovingAverage;
+import org.jfree.data.time.TimeSeries;
+import org.jfree.data.time.TimeSeriesCollection;
 import org.jfree.ui.RectangleEdge;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
@@ -79,7 +82,8 @@ public class Grafico extends JFrame{
 			List<Integer> ListaSkuOut
 			) {
 		DefaultCategoryDataset dataSet = new DefaultCategoryDataset();
-		List<Double> previsao_1 = Lista_1;
+		
+		List<Double> previsao_1 = Lista_1;	
 		List<Double> previsao_2 = Lista_2;
 		List<Double> previsao_3 = Lista_3;
 		List<Double> previsao_4 = Lista_4;
@@ -145,7 +149,6 @@ public class Grafico extends JFrame{
 			dataSet.setValue(previsao_7.get(o), "Previsao SE-6" ,String.valueOf(datax));
 			cont++;
 		}
-		
 		JFreeChart grafico = ChartFactory.createLineChart(
 				"Sku: " + sku + "\n Previsão de: " + fmt.print(dataInicio.plusMonths(1)) +
 				" até: " + fmt.print(dataFinal) + ( ListaSkuOut.size() == 0  ? "" : " \nSku Componente: " + ListaSkuOut ),

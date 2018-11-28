@@ -24,7 +24,7 @@ public class EstimativaDAO extends AbstractDAO {
 	
 	public List<Integer> listarSKU() {
 		String sql = "SELECT SKU FROM PRODUTO WHERE SKU IN (SELECT PRODUTO_SKU FROM HISTORICO WHERE "
-				+ "MES_ANO > (SELECT DATE_ADD(SYSDATE(),INTERVAL -6 MONTH))) group by SKU;";
+				+ "MES_ANO > (SELECT DATE_ADD(SYSDATE(),INTERVAL -6 MONTH))) GROUP BY SKU;";
 		List<Integer> listSku = new ArrayList<>();
 
 		try (Connection conn = getConnection();

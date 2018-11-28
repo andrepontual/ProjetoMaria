@@ -28,34 +28,49 @@ public class Estimativa {
 			RetornoHistorico retornoLista =  dao.listaHistorico(listaSku.get(i), data1);
 			List<Integer> listaSkuOut = dao.listarSKU_OUT(listaSku.get(i));
 			
-			List<Double> listarHistorico = new ArrayList<>();
-			listarHistorico = retornoLista.getListaValor();
+			List<Double> listaHistorico = new ArrayList<>();
+			listaHistorico = retornoLista.getListaValor();
 			List<Double> listaDemanda = new ArrayList<>();
 			listaDemanda = retornoLista.getListaDemanda();
 			DateTime dataIniciop = new DateTime();
 			dataIniciop = retornoLista.getListaDataSku().get(0);
-						
-			CalculoPI media_2 = new CalculoPI(2, listarHistorico, dataIniciop, data2);
-			media_2.calcularMediaMovel();
-			media_2.calcularMenorAlpha();
-			media_2.calcuarSuavizacaoExponencial(media_2.getValorAlpha());
-			media_2.calcularEqmMM();
-			media_2.calcularEqmSV();
-						
-			CalculoPI media_4 = new CalculoPI(4, listarHistorico, dataIniciop, data2);
-			media_4.calcularMediaMovel();
-			media_4.calcularMenorAlpha();
-			media_4.calcuarSuavizacaoExponencial(media_4.getValorAlpha());
-			media_4.calcularEqmMM();
-			media_4.calcularEqmSV();
-						
-			CalculoPI media_6 = new CalculoPI(6, listarHistorico, dataIniciop, data2);
-			media_6.calcularMediaMovel();
-			media_6.calcularMenorAlpha();
-			media_6.calcuarSuavizacaoExponencial(media_6.getValorAlpha());
-			media_6.calcularEqmMM();
-			media_6.calcularEqmSV();
-						
+			
+			CalculoPI media_2 = new CalculoPI();
+				media_2.setTamMediaMovel(2);
+				List<Double> listaHistorico_2 = new ArrayList<>(listaHistorico);
+				media_2.setListaHistorico(listaHistorico_2);
+				media_2.setDataInicioPrevisao(dataIniciop);
+				media_2.setDataFinalPrevisao(data2);
+				media_2.calcularMediaMovel();
+				media_2.calcularMenorAlpha();
+				media_2.calcuarSuavizacaoExponencial(media_2.getValorAlpha());
+				media_2.calcularEqmMM();
+				media_2.calcularEqmSV();
+			
+			CalculoPI media_4 = new CalculoPI();	
+				media_4.setTamMediaMovel(4);
+				List<Double> listaHistorico_4 = new ArrayList<>(listaHistorico);
+				media_4.setListaHistorico(listaHistorico_4);
+				media_4.setDataInicioPrevisao(dataIniciop);
+				media_4.setDataFinalPrevisao(data2);
+				media_4.calcularMediaMovel();
+				media_4.calcularMenorAlpha();
+				media_4.calcuarSuavizacaoExponencial(media_4.getValorAlpha());
+				media_4.calcularEqmMM();
+				media_4.calcularEqmSV();
+			
+			CalculoPI media_6 = new CalculoPI();
+				media_6.setTamMediaMovel(6);
+				List<Double> listaHistorico_6 = new ArrayList<>(listaHistorico);
+				media_6.setListaHistorico(listaHistorico_6);
+				media_6.setDataInicioPrevisao(dataIniciop);
+				media_6.setDataFinalPrevisao(data2);
+				media_6.calcularMediaMovel();
+				media_6.calcularMenorAlpha();
+				media_6.calcuarSuavizacaoExponencial(media_6.getValorAlpha());
+				media_6.calcularEqmMM();
+				media_6.calcularEqmSV();
+			
 			List<Double> listaEqm = new ArrayList<>();
 			listaEqm.add(media_2.getEqm());
 			listaEqm.add(media_4.getEqm());
