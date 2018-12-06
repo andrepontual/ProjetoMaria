@@ -192,6 +192,7 @@ public class CalculoPI {
 	public void calcularEqmMM() { 
 		double soma = 0.0;
 		int tamanho = calcularPeriodo() - this.getTamMediaMovel();
+		
 		for (int i = 0; i < tamanho; i++) {
 			soma += Math.pow(Math.abs(getListaHistorico().get(i+getTamMediaMovel()) - getListaMediaMovel().get(i+getTamMediaMovel())), 2);
 		}
@@ -201,6 +202,7 @@ public class CalculoPI {
 	public void calcularEqmSV() { 
 		double soma = 0.0;
 		int tamanho = getListaHistorico().size();
+		
 		for (int i = 0; i < tamanho; i++) {
 			soma += Math.pow(Math.abs(getListaHistorico().get(i) - getListaSuavizacaoExponencial().get(i)), 2);
 		}
@@ -212,8 +214,8 @@ public class CalculoPI {
 	
 	}
 	public int calcularNumeroPrevisoes() {
-		/*lembrar de zerar a data para previsoes definitivas*/
-		DateTime hoje = new DateTime(2018, 10, 01,0,0,0);  
+		DateTime hoje = new DateTime().withDayOfMonth(1).withTime(0, 0, 0, 0);
+		
 		return Months.monthsBetween(hoje, getDataFinalPrevisao()).getMonths();
 	}
 

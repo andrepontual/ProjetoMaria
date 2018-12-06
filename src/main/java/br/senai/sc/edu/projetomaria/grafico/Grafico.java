@@ -19,9 +19,6 @@ import org.jfree.chart.renderer.category.CategoryItemRenderer;
 import org.jfree.chart.renderer.category.LineAndShapeRenderer;
 import org.jfree.chart.title.LegendTitle;
 import org.jfree.data.category.DefaultCategoryDataset;
-import org.jfree.data.time.MovingAverage;
-import org.jfree.data.time.TimeSeries;
-import org.jfree.data.time.TimeSeriesCollection;
 import org.jfree.ui.RectangleEdge;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
@@ -187,9 +184,10 @@ public class Grafico extends JFrame{
 			render.setSeriesStroke(5, new BasicStroke(1.75f));
 			render.setSeriesStroke(6, new BasicStroke(1.75f));
 			
+		
 			org.jfree.chart.axis.CategoryAxis eixox = plot.getDomainAxis();
 			eixox.setLowerMargin(0.01);
-							
+			eixox.setTickMarksVisible(false);;				
 			Font font = new Font("Dialog", Font.BOLD, 13);
 			
 			org.jfree.chart.axis.ValueAxis ex = plot.getRangeAxis();
@@ -197,6 +195,7 @@ public class Grafico extends JFrame{
 			ex.setTickLabelFont(font);
 			eixox.setCategoryLabelPositions(CategoryLabelPositions.UP_45);
 			eixox.setTickLabelFont(font);
+			
 			
 			LegendTitle legenda = new LegendTitle(plot);
 			legenda.setItemFont(font);
