@@ -48,6 +48,7 @@ public class FamiliaDAO extends AbstractDAO {
 	public void insert(List<Familia> familia){
 		String sql = SQL.INSERT_FAMILIA_INCREMENT;
 		try (PreparedStatement stmt = getConnection().prepareStatement(sql)) {
+			
 			for (int i = 0; i < familia.size(); i++) {
 				stmt.setString(1, familia.get(i).getCodigo());
 				stmt.setString(2, familia.get(i).getNome());

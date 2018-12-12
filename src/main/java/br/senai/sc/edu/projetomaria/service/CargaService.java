@@ -8,6 +8,7 @@ import java.util.Set;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 import br.senai.sc.edu.projetomaria.dao.CanalDAO;
 import br.senai.sc.edu.projetomaria.dao.FamiliaDAO;
@@ -33,7 +34,8 @@ public class CargaService {
 		FamiliaReader familia = new FamiliaReader();
 		List<Familia> listaRegistros = familia.readFamilia(path);
 		FamiliaDAO dao = new FamiliaDAO();
-		dao.insert(listaRegistros);		
+		dao.insert(listaRegistros);
+		
 	}
 /*
 	public void updateFamilia(Path path) throws SQLException {

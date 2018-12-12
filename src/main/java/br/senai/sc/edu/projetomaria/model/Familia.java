@@ -28,8 +28,8 @@ public class Familia implements ValidableModel {
 		return codigo;
 	}
 
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
+	public void setCodigo(String codigo2) {
+		this.codigo = codigo2;
 	}
 	
 	

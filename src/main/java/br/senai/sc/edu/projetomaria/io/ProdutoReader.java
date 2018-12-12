@@ -41,7 +41,7 @@ public class ProdutoReader {
 					String codFamilia = ler.get(0);
 					String nomeProduto = ler.get(1);
 					String sku = ler.get(2);
-
+				
 					boolean skuR = sku.matches("^[0-9]{1,20}$");
 					boolean nomeProdutoR = nomeProduto.matches("^.{1,255}$");
 					boolean codFamiliaR = codFamilia.matches("^[0-9]{1,20}$");

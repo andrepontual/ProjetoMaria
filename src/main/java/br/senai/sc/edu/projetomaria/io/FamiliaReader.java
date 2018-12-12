@@ -42,13 +42,12 @@ public class FamiliaReader {
 		List<Familia> listaRegistros = new LinkedList<>();
 
 		try (FileReader leitorDeArquivos = new FileReader(pathArquivo.toFile())) {
-			
+						
 			parseArquivos = new CSVParser(leitorDeArquivos, formatadorCsv);
 			
 			List<CSVRecord> csvRecords = parseArquivos.getRecords();
-
 			
-			for (int i = 1; i < csvRecords.size(); i++) {
+			for (int i = 1 ; i < csvRecords.size(); i++) {
 				CSVRecord registro = csvRecords.get(i);
 				Familia familia = new Familia();
 				//familia.setId(id);
@@ -56,11 +55,11 @@ public class FamiliaReader {
 				familia.setNome(registro.get(NOME_FAMILIA_COMERCIAL));
 				listaRegistros.add(familia);
 			}
-			return listaRegistros;
 		} catch (Exception e) {
 			LOGGER.debug(e.getMessage());
 		}
-		return Collections.emptyList();
+		return listaRegistros;
+		
 	}
 	
 	

@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
+﻿-- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
 -- Host: localhost    Database: maria
 -- ------------------------------------------------------
@@ -47,7 +47,7 @@ DROP TABLE IF EXISTS `familia_comercial`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `familia_comercial` (
-  `COD_FAMILIA_COMERCIAL` int(11) NOT NULL,
+  `COD_FAMILIA_COMERCIAL` varchar(11) NOT NULL,
   `NOME_FAMILIA_COMERCIAL` varchar(150) NOT NULL,
   PRIMARY KEY (`COD_FAMILIA_COMERCIAL`),
   UNIQUE KEY `UN_FAMILIA_COMERCIAL` (`COD_FAMILIA_COMERCIAL`)
@@ -60,7 +60,11 @@ CREATE TABLE `familia_comercial` (
 
 LOCK TABLES `familia_comercial` WRITE;
 /*!40000 ALTER TABLE `familia_comercial` DISABLE KEYS */;
-INSERT INTO `familia_comercial` VALUES (14411063,'Familia B'),(14414013,'Familia A'),(14432035,'Familia D'),(14433025,'Familia C'),(14442568,'Familia E');
+INSERT INTO `familia_comercial` VALUES ('14411063','Familia B'),
+('14414013','Familia A'),
+('14432035','Familia D'),
+('14433025','Familia C'),
+('14442568','Familia E');
 /*!40000 ALTER TABLE `familia_comercial` ENABLE KEYS */;
 UNLOCK TABLES;
 

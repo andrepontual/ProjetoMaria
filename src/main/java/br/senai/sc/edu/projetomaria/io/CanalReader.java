@@ -42,12 +42,12 @@ public class CanalReader {
 			parseArquivos = new CSVParser(leitorDeArquivos, formatadorCsv);
 			
 			List<CSVRecord> csvRecords = parseArquivos.getRecords();
-			
 			for (int i = 1; i <csvRecords.size(); i++) {
 				CSVRecord registro = csvRecords.get(i);
 				Canal canal = new Canal();
 				canal.setDescricao(registro.get(DESCRICAO));
 				listaRegistros.add(canal);
+				
 			}
 			return listaRegistros;
 		} catch (Exception e) {
